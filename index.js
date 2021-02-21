@@ -49,5 +49,8 @@ const job = schedule.scheduleJob('0 0 * * *', async function () {
 // punish into losing xp
 
 
-client.login(process.env.DISCORD_TOKEN);
+//!!!!
+// TODO check for process.env stuff move to config on add on heroku!
+//!!!!
+client.login(process.env.BOT_TOKEN);
 
