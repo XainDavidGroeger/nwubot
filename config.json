@@ -1,0 +1,29 @@
+{
+    "images": {
+        "levelImages": {
+            "1": "http://ttrace.de/img/nwubot/academystudent.png",
+            "2": "http://ttrace.de/img/nwubot/genin.png",
+            "3": "http://ttrace.de/img/nwubot/chunin.png",
+            "4": "http://ttrace.de/img/nwubot/jounin.png",
+            "5": "http://ttrace.de/img/nwubot/anbu.png",
+            "6": "http://ttrace.de/img/nwubot/sannin.png",
+            "7": "http://ttrace.de/img/nwubot/akatsuki.png",
+            "8": "http://ttrace.de/img/nwubot/kage.png"
+        },
+        "welcome": "http://ttrace.de/img/nwubot/welcomeourserver.png",
+        "rules": "http://ttrace.de/img/nwubot/rules.png",
+        "levelinfo": "http://ttrace.de/img/nwubot/levelinfo.png"
+    },
+
+    "xp": {
+        "message": 20,
+        "messageWords": 3,
+        "messageLength": 15,
+        "invite": 200,
+        "messageLimit": 10,
+        "questionAnswered": 50,
+        "questionBoostDailyLimit": 3 
+    }
+ 
+
+}
