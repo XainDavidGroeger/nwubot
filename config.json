@@ -2,16 +2,10 @@
 
     "prefix": "!",
 
-    "emojis": {
-        "goodAnswerEmoji": "👍",
-        "euEmoji": "🇪",
-        "usEmoji": "🇺"
-    },
-
     "roles": {
         "moderator": "moderator",
         "eu": "eu",
-        "us": "us",
+        "us": "usa",
         "member": "member",
         "muted": "muted",
         "levelRoles": {

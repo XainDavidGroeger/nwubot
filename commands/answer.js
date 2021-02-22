@@ -1,6 +1,7 @@
 const config = require('../config.json');
 const Question = require('../models/question');
 const Answer = require('../models/answer');
+const UserRepository = require('../repositories/userRepository');
 const mongoose = require('mongoose');
 const xpService = require('../services/xpService');
 
@@ -54,7 +55,7 @@ module.exports = {
             .catch(err => console.log());
 
 
-        const goodAnswerEmoji = config.emojis.goodAnswerEmoji;
+        const goodAnswerEmoji = '👍';
 
         let answerText = message.content.split(" ");
         answerText[0] = "";
@@ -76,10 +77,13 @@ module.exports = {
         messageEmbed.react(goodAnswerEmoji);
 
         client.on('messageReactionAdd', async (reaction, user) => {
-            if (user.dailyQUestions < config.xp.questionBoostDailyLimit) {
+            if (user.bot) return;
+
+            let questionUser = await UserRepository.createOrFindUser(question.userId, message.channel, client);
+
+            if (questionUser.dailyQuestions < config.xp.questionBoostDailyLimit) {
                 if (reaction.message.partial) await reaction.message.fetch();
                 if (reaction.partial) await reaction.fetch();
-                if (user.bot) return;
                 if (!reaction.message.guild) return;
 
                 if (user.id === question.userId && question.answered === false) {
@@ -108,8 +112,8 @@ module.exports = {
                                 { name: 'Bonus XP', value: config.xp.questionAnswered },
                             );
 
-                        user.dailyQUestions++;
-                        await user.save()
+                            questionUser.dailyQuestions++;
+                        await questionUser.save()
                         .then(result => console.log())
                         .catch(err => console.log());
 
