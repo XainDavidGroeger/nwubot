@@ -45,7 +45,39 @@ async function createOrFindUser(userId, channel, client) {
             .then(result => console.log())
             .catch(err => console.log(err));
 
+            let guild = client.guilds.cache.get(process.env.GUILD_ID);
+
+            let welcomeRole = guild.roles.cache.find(role => role.name === client.config.roles.member);
+            guild.members.cache.get(userId).roles.add(welcomeRole);
+    
+            let level = getLevelByXp(user.xp, client.config);
+            let role = guild.roles.cache.find(role => role.name === client.config.roles.levelRoles[level]);
+            guild.members.cache.get(userId).roles.add(role);
+
         return user;    
+    }
+}
+
+function getLevelByXp(xp, config) {
+    switch (true) {
+        case xp >= parseInt(config.xp.levelXp[1]) && xp < parseInt(config.xp.levelXp[2]):
+            return 1;
+        case xp >= parseInt(config.xp.levelXp[2]) && xp < parseInt(config.xp.levelXp[3]):
+            return 2;
+        case xp >= parseInt(config.xp.levelXp[3]) && xp < parseInt(config.xp.levelXp[4]):
+            return 3;
+        case xp >= parseInt(config.xp.levelXp[4]) && xp < parseInt(config.xp.levelXp[5]):
+            return 4;
+        case xp >= parseInt(config.xp.levelXp[5]) && xp < parseInt(config.xp.levelXp[6]):
+            return 5;
+        case xp >= parseInt(config.xp.levelXp[6]) && xp < parseInt(config.xp.levelXp[7]):
+            return 6;
+        case xp >= parseInt(config.xp.levelXp[7]) && xp < parseInt(config.xp.levelXp[8]):
+            return 7;
+        case xp >= parseInt(config.xp.levelXp[8]):
+            return 8;
+        default:
+            return 8;
     }
 }
 
