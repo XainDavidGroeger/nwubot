@@ -1,10 +1,11 @@
 const { GuildMemberManager } = require("discord.js");
+const { config } = require("../config.json");
 
 module.exports = {
     name: 'kick',
     description: 'kicks a member',
     execute(client, message, args) {
-        let role = message.member.roles.cache.some(r => r.name === process.env.MOD_ROLE);
+        let role = message.member.roles.cache.some(r => r.name === config.roles.moderator);
         if (role) {
         const member = message.mentions.users.first();
             if (member) {

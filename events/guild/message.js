@@ -4,7 +4,7 @@ const xpService = require("../../services/xpService");
 
 module.exports = async (Discord, client, message) => {
 
-    const prefix = process.env.PREFIX;
+    const prefix = config.prefix;
     if (message.author.bot) return;
 
     if (!message.content.startsWith(prefix)

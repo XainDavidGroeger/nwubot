@@ -1,8 +1,11 @@
+const { User } = require('discord.js');
 const fs = require('fs');
 const config = require('../../config.json');
 const UserRepository = require('../../repositories/userRepository');
+const xpService = require('../../services/xpService');
 
 module.exports = async (Discord, client, oldMember, newMember) => {
+
 
     if (oldMember.pending && !newMember.pending) {
 
@@ -19,23 +22,28 @@ module.exports = async (Discord, client, oldMember, newMember) => {
             // Look through the invites, find the one for which the uses went up.
             const invite = guildInvites.find(i => oldInvites.get(i.code).uses < i.uses);
 
-            let user = await UserRepository.gainInviteXPByInviteUrl(invite.url);
+            let user = await UserRepository.findByDiscordUrl(invite.url);
+
             if (user !== null) {
                 if (!userexists) {
+                    await xpService.gainInviteXPByInviteUrl(invite.url, client.config.xp.invite, client);
                     newMember.guild.channels.cache.get(process.env.GENERAL_CHANNEL)
-                        .send(`Gratulation <@${user.userId}> you successfully invited <@${invitedUser.userId}> to the server and gained X XP!`)
+                        .send(`Gratulation <@${user.userId}> you successfully invited <@${invitedUser.userId}> to the server and gained ${client.config.xp.invite} XP!`)
                 } else {
                     newMember.guild.channels.cache.get(process.env.GENERAL_CHANNEL)
                         .send(`Gratulation <@${user.userId}> you successfully invited <@${invitedUser.userId}> to the server! Since he was already here once, you dont earn XP.`)
                 }
                 await UserRepository.setInvitedBy(invitedUser, user.userId);
             }
-
             return true;
         })
 
-        let welcomeRole = newMember.guild.roles.cache.find(role => role.name === process.env.MEMBER_ROLE);
+        let welcomeRole = newMember.guild.roles.cache.find(role => role.name === config.roles.member);
         newMember.roles.add(welcomeRole);
+
+        let level = xpService.getLevelByXp(invitedUser.xp);
+        let role = newMember.guild.roles.cache.find(role => role.name === config.roles.levelRoles[level]);
+        newMember.roles.add(role);
 
         let welcomeEmbed = new Discord.MessageEmbed()
             .setColor('#80FFFF')
@@ -45,7 +53,7 @@ module.exports = async (Discord, client, oldMember, newMember) => {
             );
 
 
-            newMember.guild.channels.cache.get(process.env.WELCOME_CHANNEL_ID)
+        newMember.guild.channels.cache.get(process.env.WELCOME_CHANNEL_ID)
             .send(welcomeEmbed);
     }
 

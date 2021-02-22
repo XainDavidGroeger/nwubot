@@ -1,9 +1,12 @@
 const mongoose = require("mongoose");
+const { config } = require("../config.json");
 const User = require("../models/user");
 
 async function userExists(userId) {
     var users = await User.find({ 'userId': userId }, function (err, users) {
-        if (err) return handleError(err);
+        if (err) {
+            console.log(err);
+        }
         return users;
     });
 
@@ -17,7 +20,9 @@ async function userExists(userId) {
 async function createOrFindUser(userId, channel, client) {
 
     var users = await User.find({ 'userId': userId }, function (err, users) {
-        if (err) return handleError(err);
+        if (err) {
+            console.log(err);
+        }
         return users;
     });
 
@@ -38,7 +43,7 @@ async function createOrFindUser(userId, channel, client) {
         });
         await user.save()
             .then(result => console.log())
-            .catch(err => console.log());
+            .catch(err => console.log(err));
 
         return user;    
     }
@@ -69,51 +74,6 @@ async function createNewInviteLink(channel) {
     });
 }
 
-async function gainInviteXPByInviteUrl(url) {
-
-    let inviter = await findByDiscordUrl(url)
-
-    if (inviter !== null) {
-        inviter.xp = inviter.xp + 10;
-
-        await inviter.save()
-            .then(result => console.log())
-            .catch(err => console.log());
-
-        return inviter;
-    }
-
-    return null;
-}
-
-function getNextLevelThresholdByCurrentLevel(level) {
-    let nextLevel = level + 1;
-
-    // TODO use enum
-    switch (nextLevel) {
-        case 1:
-            return process.env.LEVEL_ONE_XP;
-        case 2:
-            return process.env.LEVEL_TWO_XP;
-        case 3:
-            return process.env.LEVEL_THREE_XP;
-        case 4:
-            return process.env.LEVEL_FOUR_XP;
-        case 5:
-            return process.env.LEVEL_FIVE_XP;
-        case 6:
-            return process.env.LEVEL_SIX_XP;
-        case 7:
-            return process.env.LEVEL_SEVEN_XP;
-        case 8:
-            return process.env.LEVEL_EIGHT_XP;
-        default:
-            return process.env.LEVEL_EIGHT_XP; 
-    }
-
-}
-
-
 async function setInvitedBy(user, inviterUserId) {
     user.invitedBy = inviterUserId;
     await user.save()
@@ -122,4 +82,4 @@ async function setInvitedBy(user, inviterUserId) {
 }
 
 
-module.exports = { createOrFindUser, gainInviteXPByInviteUrl, getNextLevelThresholdByCurrentLevel, userExists, setInvitedBy };
+module.exports = { createOrFindUser, userExists, setInvitedBy, findByDiscordUrl };

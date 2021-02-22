@@ -1,4 +1,31 @@
 {
+
+    "prefix": "!",
+
+    "emojis": {
+        "goodAnswerEmoji": "👍",
+        "euEmoji": "🇪",
+        "usEmoji": "🇺"
+    },
+
+    "roles": {
+        "moderator": "moderator",
+        "eu": "eu",
+        "us": "us",
+        "member": "member",
+        "muted": "muted",
+        "levelRoles": {
+            "1":  "academy student",
+            "2":  "genin",
+            "3":  "chunin",
+            "4":  "jounin",
+            "5":  "anbu",
+            "6":  "sannin",
+            "7":  "akatsuki",
+            "8":  "kage"
+        }
+    }, 
+
     "images": {
         "levelImages": {
             "1": "http://ttrace.de/img/nwubot/academystudent.png",
@@ -22,7 +49,18 @@
         "invite": 200,
         "messageLimit": 10,
         "questionAnswered": 50,
-        "questionBoostDailyLimit": 3 
+        "questionBoostDailyLimit": 3,
+
+        "levelXp": {
+            "1":  0,
+            "2":  100,
+            "3":  225,
+            "4":  505,
+            "5":  1040,
+            "6":  2560,
+            "7":  5765,
+            "8":  12975
+        }
     }
  
 

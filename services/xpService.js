@@ -5,7 +5,8 @@ const User = require('../models/user');
 const UserRepository = require('../repositories/userRepository');
 
 async function gainXp(amount, authorId, channel, client) {
-    let user = await UserRepository.createOrFindUser(authorId, channel, client);
+
+    let user = await UserRepository.createOrFindUser(authorId, channel, client)
     if (user.dailyMessageXp + 1 <= config.xp.messageLimit) {
         let newEmbed = await levelUpMember(amount, user, client);
         if (newEmbed !== null) {
@@ -14,41 +15,37 @@ async function gainXp(amount, authorId, channel, client) {
     }
 }
 
+function getLevelByXp(xp) {
+    switch (true) {
+        case xp >= parseInt(config.xp.levelXp[1]) && xp < parseInt(config.xp.levelXp[2]):
+            return 1;
+        case xp >= parseInt(config.xp.levelXp[2]) && xp < parseInt(config.xp.levelXp[3]):
+            return 2;
+        case xp >= parseInt(config.xp.levelXp[3]) && xp < parseInt(config.xp.levelXp[4]):
+            return 3;
+        case xp >= parseInt(config.xp.levelXp[4]) && xp < parseInt(config.xp.levelXp[5]):
+            return 4;
+        case xp >= parseInt(config.xp.levelXp[5]) && xp < parseInt(config.xp.levelXp[6]):
+            return 5;
+        case xp >= parseInt(config.xp.levelXp[6]) && xp < parseInt(config.xp.levelXp[7]):
+            return 6;
+        case xp >= parseInt(config.xp.levelXp[7]) && xp < parseInt(config.xp.levelXp[8]):
+            return 7;
+        case xp >= parseInt(config.xp.levelXp[8]):
+            return 8;
+        default:
+            return 8;
+    }
+}
+
 async function levelUpMember(amount, user, client) {
 
+    let oldXp = user.xp;
     user.xp = user.xp + amount;
     user.dailyMessageXp++;
     let currentLevel = user.level;
     let xp = user.xp;
-    switch (true) {
-        case xp >= parseInt(process.env.LEVEL_ONE_XP) && xp < parseInt(process.env.LEVEL_TWO_XP):
-            user.level = 1;
-            break;
-        case xp >= parseInt(process.env.LEVEL_TWO_XP) && xp < parseInt(process.env.LEVEL_THREE_XP):
-            user.level = 2;
-            break;
-        case xp >= parseInt(process.env.LEVEL_THREE_XP) && xp < parseInt(process.env.LEVEL_FOUR_XP):
-            user.level = 3;
-            break;
-        case xp >= parseInt(process.env.LEVEL_FOUR_XP) && xp < parseInt(process.env.LEVEL_FIVE_XP):
-            user.level = 4;
-            break;
-        case xp >= parseInt(process.env.LEVEL_FIVE_XP) && xp < parseInt(process.env.LEVEL_SIX_XP):
-            user.level = 5;
-            break;
-        case xp >= parseInt(process.env.LEVEL_SIX_XP) && xp < parseInt(process.env.LEVEL_SEVEN_XP):
-            user.level = 6;
-            break;
-        case xp >= parseInt(process.env.LEVEL_SEVEN_XP) && xp < parseInt(process.env.LEVEL_EIGHT_XP):
-            user.level = 7;
-            break;
-        case xp >= parseInt(process.env.LEVEL_EIGHT_XP):
-            user.level = 8;
-            break;
-        default:
-            break;
-    }
-
+    user.level = getLevelByXp(xp);
 
     await user.save()
         .then(result => console.log())
@@ -56,7 +53,13 @@ async function levelUpMember(amount, user, client) {
 
     if (currentLevel < user.level) {
 
-        let newLevelName = getLevelName(user.level);
+        let oldLevel = getLevelByXp(oldXp);
+        let oldRole = client.guilds.cache.get(process.env.GUILD_ID).roles.cache.find(role => role.name === client.config.roles.levelRoles[oldLevel]);
+        let newRole = client.guilds.cache.get(process.env.GUILD_ID).roles.cache.find(role => role.name === client.config.roles.levelRoles[user.level]);
+        client.guilds.cache.get(process.env.GUILD_ID).members.cache.get(user.userId).roles.remove(oldRole);
+        client.guilds.cache.get(process.env.GUILD_ID).members.cache.get(user.userId).roles.add(newRole);
+
+        let newLevelName = getLevelName(user.level, client);
         let memberTarget = client.guilds.cache.get(process.env.GUILD_ID).members.cache.get(user.userId);
 
         const newEmbed = new Discord.MessageEmbed()
@@ -73,27 +76,8 @@ async function levelUpMember(amount, user, client) {
 
 }
 
-function getLevelName(level) {
-    switch (level) {
-        case 1:
-            return process.env.LEVEL_ONE_NAME;
-        case 2:
-            return process.env.LEVEL_TWO_NAME;
-        case 3:
-            return process.env.LEVEL_THREE_NAME;
-        case 4:
-            return process.env.LEVEL_FOUR_NAME;
-        case 5:
-            return process.env.LEVEL_FIVE_NAME;
-        case 6:
-            return process.env.LEVEL_SIX_NAME;
-        case 7:
-            return process.env.LEVEL_SEVEN_NAME;
-        case 8:
-            return process.env.LEVEL_EIGHT_NAME;
-        default:
-            break;
-    }
+function getLevelName(level, client) {
+    return client.config.roles.levelRoles[level];
 }
 
 function validateMessageForXp(message) {
@@ -106,4 +90,25 @@ function validateMessageForXp(message) {
     return false;
 }
 
-module.exports = { gainXp, getLevelName, levelUpMember, validateMessageForXp };
+async function gainInviteXPByInviteUrl(url, amount, client) {
+
+    let inviter = await UserRepository.findByDiscordUrl(url)
+
+    if (inviter !== null) {
+
+        let newEmbed = await levelUpMember(amount, inviter, client);
+        if (newEmbed !== null) {
+            client.guilds.cache.get(process.env.GUILD_ID).members.cache.get(inviter.userId).user.send(newEmbed);
+        }
+
+        await inviter.save()
+            .then(result => console.log())
+            .catch(err => console.log());
+
+        return inviter;
+    }
+
+    return null;
+}
+
+module.exports = { gainXp, getLevelName, levelUpMember, gainInviteXPByInviteUrl, validateMessageForXp, getLevelByXp};

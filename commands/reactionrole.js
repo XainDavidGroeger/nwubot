@@ -3,11 +3,11 @@ module.exports = {
     description: "Sets up a reaction role message!",
     async execute(client, message, args, Discord) {
         const channel = process.env.GET_ROLES_CHANNEL_ID;
-        const euRole = message.guild.roles.cache.find(role => role.name === "eu");
-        const usaRole = message.guild.roles.cache.find(role => role.name === "usa");
+        const euRole = message.guild.roles.cache.find(role => role.name === config.roles.eu);
+        const usaRole = message.guild.roles.cache.find(role => role.name === config.roles.us);
  
-        const euEmoji = process.env.EU_EMOJI;
-        const usEmoji = process.env.US_EMOJI;
+        const euEmoji = config.emojis.eu;
+        const usEmoji = config.emojis.us;
  
         const embed = new Discord.MessageEmbed()
             .setColor('#80FFFF')

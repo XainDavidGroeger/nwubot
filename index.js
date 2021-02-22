@@ -3,10 +3,9 @@ const User = require('./models/user');
 const UserRepository = require('./repositories/userRepository');
 const mongoose = require('mongoose');
 const schedule = require('node-schedule');
-
+const config = require('./config.json');
 
 require('dotenv').config();
-
 
 const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"] });
 
@@ -15,6 +14,7 @@ const { env } = require('process');
 
 client.commands = new Discord.Collection();
 client.mongoose = mongoose;
+client.config = config;
 client.invites = [];
 
 
@@ -43,14 +43,9 @@ const job = schedule.scheduleJob('0 0 * * *', async function () {
     client.guilds.cache.get(process.env.GUILD_ID).channels.cache.get(process.env.GENERAL_CHANNEL).send('Daily message XP was reset')
 });
 
-// invites tracker
-// accepted invites xp
 // level system xp into ranks
 // punish into losing xp
 
 
-//!!!!
-// TODO check for process.env stuff move to config on add on heroku!
-//!!!!
 client.login(process.env.BOT_TOKEN);
 

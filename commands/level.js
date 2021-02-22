@@ -6,7 +6,7 @@ module.exports = {
     description: 'Display your current level status',
     async execute(client, message, args, Discord) {
         let user = await UserRepository.createOrFindUser(message.author.id, message.channel, client);
-        const levelEmbed = LevelService.getLevelEmbedByUser(user, message);
+        const levelEmbed = LevelService.getLevelEmbedByUser(user, message, client);
         message.channel.send(levelEmbed);
     }
 }

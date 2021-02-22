@@ -4,7 +4,7 @@ module.exports = {
     execute(client, message, args) {
         const member = message.mentions.users.first();
 
-        let role = message.member.roles.cache.some(r => r.name === process.env.MOD_ROLE);
+        let role = message.member.roles.cache.some(r => r.name === config.roles.moderator);
 
         if (role) {
             if (member) {

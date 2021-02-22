@@ -4,6 +4,7 @@ const Answer = require('../models/answer');
 const mongoose = require('mongoose');
 const xpService = require('../services/xpService');
 
+// TODO clean code
 module.exports = {
     name: 'answer',
     description: 'Answers to a question',
@@ -53,7 +54,7 @@ module.exports = {
             .catch(err => console.log());
 
 
-        const goodAnswerEmoji = process.env.GOOD_ANSWER_EMOJI;
+        const goodAnswerEmoji = config.emojis.goodAnswerEmoji;
 
         let answerText = message.content.split(" ");
         answerText[0] = "";

@@ -1,18 +1,19 @@
 const ms = require('ms');
+const { config } = require('../config.json');
 module.exports = {
     name: 'mute',
     description: 'mutes a member',
     execute(client, message, args) {
 
-        let role = message.member.roles.cache.some(r => r.name === process.env.MOD_ROLE);
+        let role = message.member.roles.cache.some(r => r.name === config.roles.moderator);
 
         if (role) {
 
             const target = message.mentions.users.first();
 
             if (target) {
-                let mainRole = message.guild.roles.cache.find(r => r.name === process.env.MEMBER_ROLE);
-                let muteRole = message.guild.roles.cache.find(r => r.name === process.env.MUTE_ROLE);
+                let mainRole = message.guild.roles.cache.find(r => r.name === config.roles.member);
+                let muteRole = message.guild.roles.cache.find(r => r.name === config.roles.muted);
                 let memberTarget = message.guild.members.cache.get(target.id);
 
 
