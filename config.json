@@ -3,20 +3,20 @@
     "prefix": "!",
 
     "roles": {
-        "moderator": "moderator",
-        "eu": "eu",
-        "us": "usa",
+        "moderator": "Community Manager",
+        "eu": "europe",
+        "us": "america",
         "member": "member",
         "muted": "muted",
         "levelRoles": {
-            "1":  "academy student",
-            "2":  "genin",
-            "3":  "chunin",
-            "4":  "jounin",
-            "5":  "anbu",
-            "6":  "sannin",
-            "7":  "akatsuki",
-            "8":  "kage"
+            "1":  "Academy student",
+            "2":  "Genin",
+            "3":  "Chunin",
+            "4":  "Jounin",
+            "5":  "Anbu",
+            "6":  "Sannin",
+            "7":  "Akatsuki",
+            "8":  "Kage"
         }
     }, 
 
@@ -48,12 +48,12 @@
         "levelXp": {
             "1":  0,
             "2":  100,
-            "3":  225,
-            "4":  505,
-            "5":  1040,
-            "6":  2560,
-            "7":  5765,
-            "8":  12975
+            "3":  500,
+            "4":  1105,
+            "5":  2240,
+            "6":  4060,
+            "7":  10000,
+            "8":  20000
         }
     }
  

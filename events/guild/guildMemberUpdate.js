@@ -22,20 +22,23 @@ module.exports = async (Discord, client, oldMember, newMember) => {
             // Look through the invites, find the one for which the uses went up.
             const invite = guildInvites.find(i => oldInvites.get(i.code).uses < i.uses);
 
-            let user = await UserRepository.findByDiscordUrl(invite.url);
+            if (typeof invite.url !== 'undefined') {
+                let user = await UserRepository.findByDiscordUrl(invite.url);
 
-            if (user !== null) {
-                if (!userexists) {
-                    await xpService.gainInviteXPByInviteUrl(invite.url, client.config.xp.invite, client);
-                    newMember.guild.channels.cache.get(process.env.GENERAL_CHANNEL)
-                        .send(`Gratulation <@${user.userId}> you successfully invited <@${invitedUser.userId}> to the server and gained ${client.config.xp.invite} XP!`)
-                } else {
-                    newMember.guild.channels.cache.get(process.env.GENERAL_CHANNEL)
-                        .send(`Gratulation <@${user.userId}> you successfully invited <@${invitedUser.userId}> to the server! Since he was already here once, you dont earn XP.`)
+                if (user !== null) {
+                    if (!userexists) {
+                        await xpService.gainInviteXPByInviteUrl(invite.url, client.config.xp.invite, client);
+                        newMember.guild.channels.cache.get(process.env.GENERAL_CHANNEL)
+                            .send(`Gratulation <@${user.userId}> you successfully invited <@${invitedUser.userId}> to the server and gained ${client.config.xp.invite} XP!`)
+                    } else {
+                        newMember.guild.channels.cache.get(process.env.GENERAL_CHANNEL)
+                            .send(`Gratulation <@${user.userId}> you successfully invited <@${invitedUser.userId}> to the server! Since he was already here once, you dont earn XP.`)
+                    }
+                    await UserRepository.setInvitedBy(invitedUser, user.userId);
                 }
-                await UserRepository.setInvitedBy(invitedUser, user.userId);
+                return true;
             }
-            return true;
+            
         })
 
         let welcomeRole = newMember.guild.roles.cache.find(role => role.name === config.roles.member);
