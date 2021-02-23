@@ -6,8 +6,11 @@ const xpService = require('../../services/xpService');
 
 module.exports = async (Discord, client, oldMember, newMember) => {
 
+    console.log(oldMember.pending)
+    console.log(newMember.pending)
 
     if (oldMember.pending && !newMember.pending) {
+        console.log(newMember.user.username)
 
         let userexists = await UserRepository.userExists(newMember.user.id);
 
