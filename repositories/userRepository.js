@@ -128,7 +128,6 @@ async function getLevelRankByUserId(userId) {
         if (typeof member !== 'undefined') {
             if (user.userId === userId) {
                 rank = counter;
-                break;
             } 
             counter++;
         }
