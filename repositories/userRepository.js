@@ -113,5 +113,29 @@ async function setInvitedBy(user, inviterUserId) {
     .catch(err => console.log());
 }
 
+async function getLevelRankByUserId(userId) {
+    let topUsers = await User.find()
+    .sort({xp: -1})
+    .then(topUsers => {
+      return topUsers;
+    });
 
-module.exports = { createOrFindUser, userExists, setInvitedBy, findByDiscordUrl };
+    var counter = 1;
+    var rank = 0;
+    topUsers.forEach(function(user) {
+        let guild = client.guilds.cache.get(process.env.GUILD_ID);
+        let member = guild.members.cache.get(user.userId);
+        if (typeof member !== 'undefined') {
+            if (user.userId === userId) {
+                rank = counter;
+                break;
+            } 
+            counter++;
+        }
+    });
+
+    return rank;
+}
+
+
+module.exports = { createOrFindUser, userExists, setInvitedBy, findByDiscordUrl, getLevelRankByUserId };

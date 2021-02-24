@@ -12,12 +12,15 @@ function getLevelEmbedByUser(user, message, client) {
     let total = client.config.xp.levelXp[user.level+1];
     let current = user.xp;
 
+    let levelRank = UserRepository.getLevelRankByUserId(user.userId);
+
     return new Discord.MessageEmbed()
         .setColor('#80FFFF')
         .setTitle(`${message.author.username} | ${getLevelNameByLevel(user.level)}`)
         .addFields(
             { name: 'XP', value: `${current} / ${total}` },
             { name: 'Level', value: `${user.level}` },
+            { name: 'Rank', value: `#${levelRank}` },
         )
         .setImage(config.images.levelImages[user.level])
         .setThumbnail(message.author.avatarURL())
