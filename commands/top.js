@@ -8,23 +8,32 @@ module.exports = {
     async execute(client, message, args, Discord) {
        
         let topUsers = await User.find()
-        .sort({xp: 1})
+        .sort({xp: -1})
         .limit(10)
         .then(topUsers => {
           return topUsers;
         });
 
-        topUsers.forEach(function(user) {
 
+        var topEmbed = new Discord.MessageEmbed()
+        .setColor('#80FFFF')
+        .setTitle(`Top 10 Level Leaderboard`)
+
+
+        let counter = 1;
+        topUsers.forEach(function(user) {
 
             let guild = client.guilds.cache.get(process.env.GUILD_ID);
             let member = guild.members.cache.get(user.userId);
-
-
             if (typeof member !== 'undefined') {
-                console.log("user " + member.user.username + " xp: " + user.xp + "");
+                topEmbed.addField(
+                    `#${counter}`, `${member.user.username} | XP: ${user.xp} | Level: ${client.config.roles.levelRoles[user.level]}` 
+                )
+                counter++;
             }
 
         });
+
+        message.channel.send(topEmbed);
     }
 }
