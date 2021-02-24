@@ -16,12 +16,15 @@ module.exports = {
 
         topUsers.forEach(function(user) {
 
-            console.log(user)
 
             let guild = client.guilds.cache.get(process.env.GUILD_ID);
             let member = guild.members.cache.get(user.userId);
 
-            console.log("user " + member.user.username + " xp: " + user.xp + "");
+
+            if (typeof member !== 'undefined') {
+                console.log("user " + member.user.username + " xp: " + user.xp + "");
+            }
+
         });
     }
 }
