@@ -7,12 +7,12 @@ function getLevelNameByLevel(level) {
     return `${levelName.charAt(0).toUpperCase()}${levelName.slice(1)}`;
 }
 
-function getLevelEmbedByUser(user, message, client) {
+async function getLevelEmbedByUser(user, message, client) {
 
     let total = client.config.xp.levelXp[user.level+1];
     let current = user.xp;
 
-    let levelRank = UserRepository.getLevelRankByUserId(user.userId);
+    let levelRank = await UserRepository.getLevelRankByUserId(user.userId);
 
     return new Discord.MessageEmbed()
         .setColor('#80FFFF')
