@@ -12,7 +12,7 @@ async function getLevelEmbedByUser(user, message, client) {
     let total = client.config.xp.levelXp[user.level+1];
     let current = user.xp;
 
-    let levelRank = await UserRepository.getLevelRankByUserId(user.userId);
+    let levelRank = await UserRepository.getLevelRankByUserId(user.userId, client);
 
     return new Discord.MessageEmbed()
         .setColor('#80FFFF')

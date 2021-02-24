@@ -113,7 +113,7 @@ async function setInvitedBy(user, inviterUserId) {
     .catch(err => console.log());
 }
 
-async function getLevelRankByUserId(userId) {
+async function getLevelRankByUserId(userId, client) {
     let topUsers = await User.find()
     .sort({xp: -1})
     .then(topUsers => {
