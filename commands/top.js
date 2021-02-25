@@ -14,11 +14,9 @@ module.exports = {
           return topUsers;
         });
 
-
         var topEmbed = new Discord.MessageEmbed()
         .setColor('#80FFFF')
         .setTitle(`Top 10 Level Leaderboard`)
-
 
         let counter = 1;
         topUsers.forEach(function(user) {
