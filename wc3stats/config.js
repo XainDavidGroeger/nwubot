@@ -10,7 +10,7 @@ dotenv.config ({ path: path.resolve ('.env') });
 config.argv = argv;
 
 config.discord = {
-  token  : process.env.BOT_TOKEN,
+  token  : process.env.DISCORD_TOKEN,
   status : 'wc3stats.com',
   emojis : '454365223021707265'
 };
