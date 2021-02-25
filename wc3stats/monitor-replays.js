@@ -3,7 +3,8 @@ let printf = require ('printf');
 let request = require ('request-promise');
 let config = require ('./config');
 let { colors, c2e } = require ('./lib/dict');
-let { discord, embed, emoji } = require ('./lib/discord');
+const Discord = require('discord.js');
+
 
 function main ()
 {
@@ -22,7 +23,7 @@ function main ()
         R = await upload (A.url);
         R = R.body;
 
-        E = embed ()
+        E = Discord.MessageEmbed()
           .setURL ("https://wc3stats.com/games/" + R.id)
           .setTitle (R.data.game.name)
           .setColor (R.data.game.hasW3MMD ? colors.green : colors.red);
@@ -41,6 +42,15 @@ function main ()
       }
     }
   });
+}
+
+async function emoji (id) {
+  id = id.replace (/[^a-z]/gi, '');
+
+  let guild = await Discord.guilds.fetch (config.discord.emojis);
+  let emoji = guild.emojis.cache.find (e => e.id == id || e.name == id);
+
+  return (emoji);
 }
 
 async function upload (url)
