@@ -26,17 +26,6 @@ function main (client)
           .setURL ("https://wc3stats.com/games/" + R.id)
           .setTitle (R.data.game.name)
           .setColor (R.data.game.hasW3MMD ? colors.green : colors.red);
-
-        b = '';
-
-        for (let i = 0; i < R.data.game.players.length; i++) {
-          p = R.data.game.players [i];
-          e = await emoji (c2e [p.colour], client);
-          b += printf ("<:%s:%s> **%s** (%d APM)\n", e.name, e.id, p.name, p.apm);
-        }
-
-        E.addField ('Players', b);
-
         m.channel.send (E);
       }
     }
