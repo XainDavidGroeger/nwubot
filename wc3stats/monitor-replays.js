@@ -31,7 +31,7 @@ function main (client)
 
         for (let i = 0; i < R.data.game.players.length; i++) {
           p = R.data.game.players [i];
-          e = await emoji (c2e [p.colour]);
+          e = await emoji (c2e [p.colour], client);
           b += printf ("<:%s:%s> **%s** (%d APM)\n", e.name, e.id, p.name, p.apm);
         }
 
@@ -43,10 +43,10 @@ function main (client)
   });
 }
 
-async function emoji (id) {
+async function emoji (id, client) {
   id = id.replace (/[^a-z]/gi, '');
 
-  let guild = await Discord.guilds.fetch (config.discord.emojis);
+  let guild = await client.guilds.fetch (config.discord.emojis);
   let emoji = guild.emojis.cache.find (e => e.id == id || e.name == id);
 
   return (emoji);
