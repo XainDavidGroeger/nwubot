@@ -22,7 +22,7 @@ function main (client)
         R = await upload (A.url);
         R = R.body;
 
-        E = Discord.MessageEmbed()
+        E = new Discord.MessageEmbed()
           .setURL ("https://wc3stats.com/games/" + R.id)
           .setTitle (R.data.game.name)
           .setColor (R.data.game.hasW3MMD ? colors.green : colors.red);
