@@ -3,7 +3,7 @@ let printf = require ('printf');
 let config = require ('./config');
 let { discord, embed } = require ('./lib/discord');
 let { servers, colors } = require ('./lib/dict');
-let { timeago, detag, DOMMYYYY, HMS } = require ('@/lib/util');
+let { timeago, detag, DOMMYYYY, HMS } = require ('./lib/util');
 let M = {};
 
 function main ()

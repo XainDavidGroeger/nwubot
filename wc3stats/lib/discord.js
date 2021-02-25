@@ -1,5 +1,5 @@
 let { Client, MessageEmbed } = require ('discord.js');
-let config = require ('@/config');
+let config = require ('../config');
 let discord = new Client ();
 
 function embed ()
