@@ -8,7 +8,7 @@ module.exports = async (Discord, client) => {
         client.invites = guildInvites;
     });
 
-    require ('../../wc3stats/monitor-replays').main ();
+    require ('../../wc3stats/monitor-replays').main (client);
 
 return true;
 

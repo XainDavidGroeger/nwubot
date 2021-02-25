@@ -5,9 +5,9 @@ let config = require ('./config');
 let { colors, c2e } = require ('./lib/dict');
 const Discord = require('discord.js');
 
-function main ()
+function main (client)
 {
-  Discord.on ('message', async (m) => {
+  client.on ('message', async (m) => {
     if (m.attachments.length <= 0) return;
 
     for (let A of m.attachments.values ()) {
