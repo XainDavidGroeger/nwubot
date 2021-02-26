@@ -65,6 +65,7 @@ module.exports = {
         let embed = new Discord.MessageEmbed()
             .setColor('#80FFFF')
             .setTitle(`Answered by ${message.author.username}`)
+            .setImage(config.images.answer)
             .setDescription('If it answered your question please use the following Emoji:.\n\n'
                 + `${goodAnswerEmoji}`
             )
@@ -106,6 +107,7 @@ module.exports = {
                         let successEmbed = new Discord.MessageEmbed()
                             .setColor('#80FFFF')
                             .setTitle(`Gratulation ${message.author.username} your answer was marked by the creator and you gained ${config.xp.questionAnswered} XP!`)
+                            .setImage(config.images.acceptedMentor)
                             .addFields(
                                 { name: 'Question', value: question.question },
                                 { name: 'Answer', value: answerText },

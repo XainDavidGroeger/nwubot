@@ -30,6 +30,7 @@ module.exports = {
         let embed = new Discord.MessageEmbed()
             .setColor('#80FFFF')
             .setTitle(`Question by ${message.author.username}`)
+            .setImage(config.images.question)
             .addFields(
                 { name:  message.content.substr(message.content.indexOf(" ") + 1), value: `In order to answer the question you need to use the command:\n
                 !answer ${question.answerHash} 'YOUR ANSWER'` },
