@@ -87,7 +87,7 @@ module.exports = {
                 if (reaction.partial) await reaction.fetch();
                 if (!reaction.message.guild) return;
 
-                if (user.id === question.userId && question.answered === false && reaction.message.id === message.id) {
+                if (user.id === question.userId && question.answered === false) {
                     if (reaction.emoji.name === goodAnswerEmoji) {
                         question.answered = true;
                         question.answeredBy = message.author.id;
