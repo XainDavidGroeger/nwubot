@@ -1,9 +1,9 @@
 const memberCounter = require('../../counters/member-counter');
-const Question = require('../models/question');
-const Answer = require('../models/answer');
-const UserRepository = require('../repositories/userRepository');
+const Question = require('../../models/question');
+const Answer = require('../../models/answer');
+const UserRepository = require('../../repositories/userRepository');
 const mongoose = require('mongoose');
-const xpService = require('../services/xpService');
+const xpService = require('../../services/xpService');
 
 
 module.exports = async (Discord, client, reaction, user) => {
