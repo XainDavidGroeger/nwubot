@@ -12,11 +12,6 @@ module.exports = async (Discord, client, reaction, user) => {
 
     const sendToMessageChannel = reaction.message.guild.channels.cache.get(process.env.QUESTION_CHANNEL_ID);
 
-    console.log(reaction)
-    console.log(user)
-    console.log("reaction was called");
-    console.log(reaction.message.id);
-
     var questionUser = await UserRepository.createOrFindUser(user.id, reaction.message.channel, client);
 
 
@@ -35,10 +30,6 @@ module.exports = async (Discord, client, reaction, user) => {
 
     if (answer !== null) {
 
-
-        console.log("answer exists");
-
-
         var answerUser = client.guilds.cache.get(process.env.GUILD_ID).members.cache.get(answer.userId);
 
         var questions = await Question.find({ '_id': answer.questionId }, function (err, questions) {
@@ -52,7 +43,6 @@ module.exports = async (Discord, client, reaction, user) => {
         }
 
         if (question !== null) {
-            console.log("question  exists");
 
 
             if (questionUser.dailyQuestions < client.config.xp.questionBoostDailyLimit) {
@@ -60,13 +50,8 @@ module.exports = async (Discord, client, reaction, user) => {
                 if (reaction.partial) await reaction.fetch();
                 if (!reaction.message.guild) return;
 
-                console.log("daily limit not reached");
-
-
                 if (question.answered === false) {
                     if (reaction.emoji.name === goodAnswerEmoji) {
-
-                        console.log("correct emoji used");
 
                         question.answered = true;
                         question.answeredBy = reaction.message.author.id;
@@ -102,6 +87,46 @@ module.exports = async (Discord, client, reaction, user) => {
                         answerUser.send(successEmbed);
                     }
                 }
+            } else {
+                if (reaction.message.partial) await reaction.message.fetch();
+                if (reaction.partial) await reaction.fetch();
+                if (!reaction.message.guild) return;
+
+                if (question.answered === false) {
+                    if (reaction.emoji.name === goodAnswerEmoji) {
+
+                        question.answered = true;
+                        question.answeredBy = reaction.message.author.id;
+                        question.answerId = reaction.message.id;
+
+                        await question.save()
+                            .then(result => console.log())
+                            .catch(err => console.log());
+
+                        answer.markedByQuestion = true;
+                        await answer.save()
+                            .then(result => console.log())
+                            .catch(err => console.log());
+
+
+                        let successEmbed = new Discord.MessageEmbed()
+                            .setColor('#80FFFF')
+                            .setTitle(`Gratulation ${answerUser.username} your answer was marked by the creator. Since the creator already asked ${client.config.xp.questionBoostDailyLimit} today you dont earn extra XP, sorry!`)
+                            .setImage(client.config.images.acceptedMentor)
+                            .addFields(
+                                { name: 'Question', value: question.question },
+                                { name: 'Answer', value: answer.answer },
+                                { name: 'Bonus XP', value: client.config.xp.questionAnswered },
+                            );
+
+                        questionUser.dailyQuestions++;
+                        await questionUser.save()
+                            .then(result => console.log())
+                            .catch(err => console.log());
+
+                        sendToMessageChannel.send(successEmbed);
+                        answerUser.send(successEmbed);
+                    }
             }
 
         }
