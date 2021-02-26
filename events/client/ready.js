@@ -1,3 +1,5 @@
+const memberCounter = require('../../counters/member-counter');
+
 module.exports = async (Discord, client) => {
 
     console.log('NWU Bot is online!');
@@ -8,6 +10,7 @@ module.exports = async (Discord, client) => {
         client.invites = guildInvites;
     });
 
+    memberCounter(client);
     require ('../../wc3stats/monitor-replays').main (client);
 
 return true;
