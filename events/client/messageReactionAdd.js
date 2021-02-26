@@ -9,6 +9,7 @@ const xpService = require('../../services/xpService');
 module.exports = async (Discord, client, reaction, user) => {
 
     if (user.bot) return;
+
     console.log(reaction)
     console.log(user)
     console.log("reaction was called");
@@ -86,7 +87,7 @@ module.exports = async (Discord, client, reaction, user) => {
                             .setImage(client.config.images.acceptedMentor)
                             .addFields(
                                 { name: 'Question', value: question.question },
-                                { name: 'Answer', value: answerText },
+                                { name: 'Answer', value: answer.answer },
                                 { name: 'Bonus XP', value: client.config.xp.questionAnswered },
                             );
 
