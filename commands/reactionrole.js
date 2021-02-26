@@ -26,45 +26,6 @@ module.exports = {
             messageEmbed.react(euEmoji);
             messageEmbed.react(usEmoji);
 
-
-            client.on('messageReactionAdd', async (reaction, user) => {
-                if (reaction.message.partial) await reaction.message.fetch();
-                if (reaction.partial) await reaction.fetch();
-                if (user.bot) return;
-                if (!reaction.message.guild) return;
-     
-                if (reaction.message.channel.id == channel) {
-                    if (reaction.emoji.name === euEmoji) {
-                        await reaction.message.guild.members.cache.get(user.id).roles.add(euRole);
-                    }
-                    if (reaction.emoji.name === usEmoji) {
-                        await reaction.message.guild.members.cache.get(user.id).roles.add(usaRole);
-                    }
-                } else {
-                    return;
-                }
-     
-            });
-     
-            client.on('messageReactionRemove', async (reaction, user) => {
-    
-                if (reaction.message.partial) await reaction.message.fetch();
-                if (reaction.partial) await reaction.fetch();
-                if (user.bot) return;
-                if (!reaction.message.guild) return;
-     
-                if (reaction.message.channel.id == channel) {
-                    if (reaction.emoji.name === euEmoji) {
-                        await reaction.message.guild.members.cache.get(user.id).roles.remove(euRole);
-                    }
-                    if (reaction.emoji.name === usEmoji) {
-                        await reaction.message.guild.members.cache.get(user.id).roles.remove(usaRole);
-                    }
-                } else {
-                    return;
-                }
-            });
-
         }
     }
 }  
