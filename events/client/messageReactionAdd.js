@@ -116,7 +116,7 @@ module.exports = async (Discord, client, reaction, user) => {
                             .addFields(
                                 { name: 'Question', value: question.question },
                                 { name: 'Answer', value: answer.answer },
-                                { name: 'Bonus XP', value: client.config.xp.questionAnswered },
+                                { name: 'Bonus XP', value: `none` },
                             );
 
                         questionUser.dailyQuestions++;
