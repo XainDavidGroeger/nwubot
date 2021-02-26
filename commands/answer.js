@@ -77,54 +77,7 @@ module.exports = {
         let messageEmbed = await sendToMessageChannel.send(embed);
         messageEmbed.react(goodAnswerEmoji);
 
-        client.on('messageReactionAdd', async (reaction, user) => {
-            if (user.bot) return;
-
-            let questionUser = await UserRepository.createOrFindUser(question.userId, message.channel, client);
-
-            if (questionUser.dailyQuestions < config.xp.questionBoostDailyLimit) {
-                if (reaction.message.partial) await reaction.message.fetch();
-                if (reaction.partial) await reaction.fetch();
-                if (!reaction.message.guild) return;
-
-                if (user.id === question.userId && question.answered === false) {
-                    if (reaction.emoji.name === goodAnswerEmoji) {
-                        question.answered = true;
-                        question.answeredBy = message.author.id;
-                        question.answerId = message.id;
-
-                        await question.save()
-                            .then(result => console.log())
-                            .catch(err => console.log());
-
-                        answer.markedByQuestion = true;
-                        await answer.save()
-                            .then(result => console.log())
-                            .catch(err => console.log());
-
-
-                        await xpService.gainXp(config.xp.questionAnswered, message.author.id, message.channel, client);
-                        let successEmbed = new Discord.MessageEmbed()
-                            .setColor('#80FFFF')
-                            .setTitle(`Gratulation ${message.author.username} your answer was marked by the creator and you gained ${config.xp.questionAnswered} XP!`)
-                            .setImage(config.images.acceptedMentor)
-                            .addFields(
-                                { name: 'Question', value: question.question },
-                                { name: 'Answer', value: answerText },
-                                { name: 'Bonus XP', value: config.xp.questionAnswered },
-                            );
-
-                            questionUser.dailyQuestions++;
-                        await questionUser.save()
-                        .then(result => console.log())
-                        .catch(err => console.log());
-
-                        sendToMessageChannel.send(successEmbed);
-                        message.author.send(successEmbed);
-                    }
-                }
-            }
-        });
+      
 
     }
 }
