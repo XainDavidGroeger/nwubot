@@ -6,7 +6,7 @@ module.exports = async (client) => {
     goalChannel.setName(`Goal: 200`);
 
     const serverBoostChannel = guild.channels.cache.get(process.env.SERVER_BOOST_LEVEL_CHANNEL_ID);
-    serverBoostChannel.setName(`Server Boost Level: ${guild.premium_tier}`);
+    serverBoostChannel.setName(`Server Boost Level: ${guild.premiumTier}`);
 
     setInterval(() => {
        const memberCount = guild.memberCount;
