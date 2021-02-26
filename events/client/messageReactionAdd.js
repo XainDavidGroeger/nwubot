@@ -8,6 +8,9 @@ const xpService = require('../../services/xpService');
 
 module.exports = async (Discord, client, reaction, user) => {
 
+
+    console.log(reaction)
+    console.log(user)
     console.log("reaction was called");
     console.log(reaction.message.id);
 
