@@ -9,6 +9,8 @@ const xpService = require('../../services/xpService');
 module.exports = async (Discord, client, reaction, user) => {
 
 
+
+
     console.log(reaction)
     console.log(user)
     console.log("reaction was called");
@@ -52,7 +54,7 @@ module.exports = async (Discord, client, reaction, user) => {
             console.log("question  exists");
 
 
-            if (questionUser.dailyQuestions < config.xp.questionBoostDailyLimit) {
+            if (questionUser.dailyQuestions < client.config.xp.questionBoostDailyLimit) {
                 if (reaction.message.partial) await reaction.message.fetch();
                 if (reaction.partial) await reaction.fetch();
                 if (!reaction.message.guild) return;
@@ -79,15 +81,15 @@ module.exports = async (Discord, client, reaction, user) => {
                             .catch(err => console.log());
 
 
-                        await xpService.gainXp(config.xp.questionAnswered, answerUser.id, reaaction.message.channel, client);
+                        await xpService.gainXp(client.config.xp.questionAnswered, answerUser.id, reaaction.message.channel, client);
                         let successEmbed = new Discord.MessageEmbed()
                             .setColor('#80FFFF')
-                            .setTitle(`Gratulation ${answerUser.username} your answer was marked by the creator and you gained ${config.xp.questionAnswered} XP!`)
-                            .setImage(config.images.acceptedMentor)
+                            .setTitle(`Gratulation ${answerUser.username} your answer was marked by the creator and you gained ${client.config.xp.questionAnswered} XP!`)
+                            .setImage(client.config.images.acceptedMentor)
                             .addFields(
                                 { name: 'Question', value: question.question },
                                 { name: 'Answer', value: answerText },
-                                { name: 'Bonus XP', value: config.xp.questionAnswered },
+                                { name: 'Bonus XP', value: client.config.xp.questionAnswered },
                             );
 
                         questionUser.dailyQuestions++;
