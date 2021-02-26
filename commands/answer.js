@@ -41,20 +41,6 @@ module.exports = {
             return true;
         }
 
-        let answer = new Answer({
-            _id: mongoose.Types.ObjectId(),
-            userId: message.author.id,
-            questionId: question.id,
-            answer: message.content.substr(message.content.indexOf(" ") + 1),
-            markedByQuestion: false,
-            messageId: message.id
-        });
-
-        await answer.save()
-            .then(result => console.log())
-            .catch(err => console.log());
-
-
         const goodAnswerEmoji = '👍';
 
         let answerText = message.content.split(" ");
@@ -75,9 +61,22 @@ module.exports = {
             );
 
         let messageEmbed = await sendToMessageChannel.send(embed);
-        messageEmbed.react(goodAnswerEmoji);
 
-      
+        let answer = new Answer({
+            _id: mongoose.Types.ObjectId(),
+            userId: message.author.id,
+            questionId: question.id,
+            answer: message.content.substr(message.content.indexOf(" ") + 2),
+            markedByQuestion: false,
+            messageId: messageEmbed.id
+        });
+
+        await answer.save()
+            .then(result => console.log())
+            .catch(err => console.log());
+
+
+        messageEmbed.react(goodAnswerEmoji);
 
     }
 }
