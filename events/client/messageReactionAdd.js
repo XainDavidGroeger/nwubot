@@ -81,7 +81,7 @@ module.exports = async (Discord, client, reaction, user) => {
                             .catch(err => console.log());
 
 
-                        await xpService.gainXp(client.config.xp.questionAnswered, answerUser.id, reaaction.message.channel, client);
+                        await xpService.gainXp(client.config.xp.questionAnswered, answerUser.id, reaction.message.channel, client);
                         let successEmbed = new Discord.MessageEmbed()
                             .setColor('#80FFFF')
                             .setTitle(`Gratulation ${answerUser.username} your answer was marked by the creator and you gained ${client.config.xp.questionAnswered} XP!`)
