@@ -127,8 +127,9 @@ module.exports = async (Discord, client, reaction, user) => {
                         sendToMessageChannel.send(successEmbed);
                         answerUser.send(successEmbed);
                     }
-            }
+                }
 
+            }
         }
 
     }
