@@ -12,7 +12,6 @@ module.exports = async (client) => {
        const memberCount = guild.memberCount;
        const channel = guild.channels.cache.get(process.env.MEMBER_COUNT_CHANNEL_ID);
        channel.setName(`Total Members: ${memberCount.toLocaleString()}`);
-       console.log(memberCount.toLocaleString())
     }, 5000);
 
 }
