@@ -10,7 +10,7 @@ module.exports = async (Discord, client, reaction, user) => {
 
     if (user.bot) return;
 
-    const sendToMessageChannel = message.guild.channels.cache.get(process.env.QUESTION_CHANNEL_ID);
+    const sendToMessageChannel = reaction.message.guild.channels.cache.get(process.env.QUESTION_CHANNEL_ID);
 
     console.log(reaction)
     console.log(user)
