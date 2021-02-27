@@ -4,6 +4,7 @@ const Answer = require('../../models/answer');
 const UserRepository = require('../../repositories/userRepository');
 const mongoose = require('mongoose');
 const xpService = require('../../services/xpService');
+const config = require('../../config.json');
 
 
 module.exports = async (Discord, client, reaction, user) => {
