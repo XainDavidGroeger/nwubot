@@ -1,8 +1,8 @@
 const config = require('../config.json');
 
 module.exports = {
-    name: 'reactionrole',
-    description: "Sets up a reaction role message!",
+    name: 'serverrole',
+    description: "Sets up a reaction role message for server roles!",
     async execute(client, message, args, Discord) {
         const euRole = message.guild.roles.cache.find(role => role.name === config.roles.eu);
         const usaRole = message.guild.roles.cache.find(role => role.name === config.roles.us);
