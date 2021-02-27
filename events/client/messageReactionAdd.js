@@ -10,6 +10,36 @@ module.exports = async (Discord, client, reaction, user) => {
 
     if (user.bot) return;
 
+    const goodAnswerEmoji = '👍';
+    const euAnswerEmoji = '🇪';
+    const usAnswerEmoji = '🇺';
+
+    if (reaction.emoji.name === goodAnswerEmoji) {
+        await checkQuestionAnswerLogic(Discord, client, reaction, user);
+        return true;
+    }
+
+    if (reaction.emoji.name === euAnswerEmoji) {
+        await checkAddEuRoleLogic(Discord, client, reaction, user);
+        return true;
+    }
+
+    if (reaction.emoji.name === usAnswerEmoji) {
+        await checkAddUsRoleLogic(Discord, client, reaction, user);
+        return true;
+    }
+}
+
+async function checkAddEuRoleLogic(Discord, client, reaction, user) {
+    return true;
+}
+
+async function checkAddUsRoleLogic(Discord, client, reaction, user) {
+    return true;
+}
+
+async function checkQuestionAnswerLogic(Discord, client, reaction, user) {
+
     const sendToMessageChannel = reaction.message.guild.channels.cache.get(process.env.QUESTION_CHANNEL_ID);
 
     var questionUser = await UserRepository.createOrFindUser(user.id, reaction.message.channel, client);
@@ -19,9 +49,6 @@ module.exports = async (Discord, client, reaction, user) => {
         if (err) return handleError(err);
         return answers;
     });
-
-
-    const goodAnswerEmoji = '👍';
 
     var answer = null;
     if (typeof answers[0] !== 'undefined') {
@@ -133,5 +160,4 @@ module.exports = async (Discord, client, reaction, user) => {
         }
 
     }
-
 }
