@@ -11,8 +11,8 @@ module.exports = {
         const embed = new Discord.MessageEmbed()
             .setColor('#80FFFF')
             .setTitle('Where are you from?')
-            .setDescription('Do you want get notified if a game is hosted?.\n\n'
-                + `then reaction with ${notifyMeEmoji}`
+            .setDescription('Do you want get notified if a game is hosted?\n\n'
+                + `then react with ${notifyMeEmoji}`
             )
             .setImage(config.images.notifyMe);
 
