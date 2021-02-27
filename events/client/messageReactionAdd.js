@@ -32,17 +32,16 @@ module.exports = async (Discord, client, reaction, user) => {
 }
 
 async function checkAddEuRoleLogic(Discord, client, reaction, user) {
-
-    console.log(user);
-
+    const memberTarger = message.guild.members.cache.get(user.id);
     let euRole = reaction.message.guild.roles.cache.find(r => r.name === config.roles.eu);
-    user.roles.add(euRole.id);
+    memberTarger.roles.add(euRole.id);
     return true;
 }
 
 async function checkAddUsRoleLogic(Discord, client, reaction, user) {
+    const memberTarger = message.guild.members.cache.get(user.id);
     let americaRole = reaction.message.guild.roles.cache.find(r => r.name === config.roles.us);
-    user.roles.add(americaRole.id);
+    memberTarger.roles.add(americaRole.id);
     return true;
 }
 
