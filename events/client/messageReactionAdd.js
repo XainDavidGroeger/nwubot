@@ -31,13 +31,13 @@ module.exports = async (Discord, client, reaction, user) => {
 }
 
 async function checkAddEuRoleLogic(Discord, client, reaction, user) {
-    let euRole = message.guild.roles.cache.find(r => r.name === config.roles.eu);
+    let euRole = reaction.message.guild.roles.cache.find(r => r.name === config.roles.eu);
     user.roles.add(euRole.id);
     return true;
 }
 
 async function checkAddUsRoleLogic(Discord, client, reaction, user) {
-    let americaRole = message.guild.roles.cache.find(r => r.name === config.roles.us);
+    let americaRole = reaction.message.guild.roles.cache.find(r => r.name === config.roles.us);
     user.roles.add(americaRole.id);
     return true;
 }
