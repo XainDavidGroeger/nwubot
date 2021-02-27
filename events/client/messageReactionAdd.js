@@ -32,6 +32,9 @@ module.exports = async (Discord, client, reaction, user) => {
 }
 
 async function checkAddEuRoleLogic(Discord, client, reaction, user) {
+
+    console.log(user);
+
     let euRole = reaction.message.guild.roles.cache.find(r => r.name === config.roles.eu);
     user.roles.add(euRole.id);
     return true;
