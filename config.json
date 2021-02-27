@@ -6,6 +6,7 @@
         "moderator": "Community Manager",
         "eu": "europe",
         "us": "america",
+        "notifyme": "ninjaready",
         "member": "member",
         "muted": "muted",
         "levelRoles": {
@@ -38,6 +39,7 @@
         "answer": "http://ttrace.de/img/nwubot/answer.png",
         "lfMentor": "http://ttrace.de/img/nwubot/lf_mentor.png",
         "applyMentor": "http://ttrace.de/img/nwubot/apply_mentor.png",
+        "notifyMe": "http://ttrace.de/img/nwubot/bell.png",
         "acceptedMentor": "http://ttrace.de/img/nwubot/accepted_mentor.png"
     },
 

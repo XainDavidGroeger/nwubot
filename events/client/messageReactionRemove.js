@@ -6,6 +6,12 @@ module.exports = async (Discord, client, reaction, user) => {
 
     const euAnswerEmoji = '🇪';
     const usAnswerEmoji = '🇺';
+    const notifyMeEmoji = '🔔';
+
+    if (reaction.emoji.name === notifyMeEmoji) {
+        await checkNotifyMeRoleLogic(Discord, client, reaction, user);
+        return true;
+    }
 
     if (reaction.emoji.name === euAnswerEmoji) {
         await checkAddEuRoleLogic(Discord, client, reaction, user);
@@ -16,6 +22,13 @@ module.exports = async (Discord, client, reaction, user) => {
         await checkAddUsRoleLogic(Discord, client, reaction, user);
         return true;
     }
+}
+
+async function checkNotifyMeRoleLogic(Discord, client, reaction, user) {
+    const memberTarger = reaction.message.guild.members.cache.get(user.id);
+    let notifyMeRole = reaction.message.guild.roles.cache.find(r => r.name === config.roles.notifyme);
+    memberTarger.roles.remove(notifyMeRole.id);
+    return true;
 }
 
 async function checkAddEuRoleLogic(Discord, client, reaction, user) {
