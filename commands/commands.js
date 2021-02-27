@@ -16,6 +16,7 @@ module.exports = {
             { name: '!invite', value: `Creates a unique Invitelink for you. If someone follows your link to the server, you will receive some decent XP!` },
             { name: '!question YOUR_QUESTION', value: `Will bring up a question in the questions channel.` },
             { name: '!answer QUESTION_ID YOUR_ANSWER', value: `Answer an excisting question and if it helps the creator of the question you receive some nice XP!` },
+            { name: '!xpinfo', value: `Display info about how to gain xp` },
         )
         message.channel.send(embed);
     }
