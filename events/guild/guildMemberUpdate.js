@@ -26,7 +26,7 @@ module.exports = async (Discord, client, oldMember, newMember) => {
             const invite = guildInvites.find(i => function() {
                 if (typeof oldInvites.get(i.code) !== 'undefined') {
                     if (oldInvites.get(i.code).uses < i.uses) {
-                        return oldInvites.get(i.code);
+                        return i;
                     }
                 }
             });
