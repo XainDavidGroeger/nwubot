@@ -8,14 +8,14 @@ module.exports = {
         const usaRole = message.guild.roles.cache.find(role => role.name === config.roles.us);
 
         const euEmoji = '🇪';
-        const usEmoji = '🇺';
+        const usEmoji = '🇦';
 
         const embed = new Discord.MessageEmbed()
             .setColor('#80FFFF')
             .setTitle('Where are you from?')
             .setDescription('Choosing your server will allow you to interact with other player from your region.\n\n'
-                + `${euEmoji} for Europe\n`
-                + `${usEmoji} for USA`
+                + `${euEmoji} for America\n`
+                + `${usEmoji} for Europe`
             )
             .setImage('https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2019/12/warcraft-3-reforged.jpg');
 
