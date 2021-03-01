@@ -5,7 +5,7 @@ module.exports = async (Discord, client, reaction, user) => {
     if (user.bot) return;
 
     const euAnswerEmoji = '🇪';
-    const usAnswerEmoji = '🇺';
+    const usAnswerEmoji = '🇦';
     const notifyMeEmoji = '🔔';
 
     if (reaction.emoji.name === notifyMeEmoji) {
