@@ -14,14 +14,14 @@ module.exports = {
             .setColor('#80FFFF')
             .setTitle('Where are you from?')
             .setDescription('Choosing your server will allow you to interact with other player from your region.\n\n'
-                + `${euEmoji} for America\n`
-                + `${usEmoji} for Europe`
+                + `${usEmoji} for America\n`
+                + `${euEmoji} for Europe`
             )
             .setImage('https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2019/12/warcraft-3-reforged.jpg');
 
         let messageEmbed = await message.channel.send(embed);
-        messageEmbed.react(euEmoji);
         messageEmbed.react(usEmoji);
+        messageEmbed.react(euEmoji);
 
     }
 }  
