@@ -23,7 +23,13 @@ module.exports = async (Discord, client, oldMember, newMember) => {
             client.invites = guildInvites;
 
             // Look through the invites, find the one for which the uses went up.
-            const invite = guildInvites.find(i => oldInvites.get(i.code).uses < i.uses);
+            const invite = guildInvites.find(i => function() {
+                if (typeof oldInvites.get(i.code) !== 'undefined') {
+                    if (oldInvites.get(i.code).uses < i.uses) {
+                        return oldInvites.get(i.code);
+                    }
+                }
+            });
 
             if (typeof invite.url !== 'undefined') {
                 let user = await UserRepository.findByDiscordUrl(invite.url);
