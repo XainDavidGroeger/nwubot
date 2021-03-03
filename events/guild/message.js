@@ -9,10 +9,16 @@ module.exports = async (Discord, client, message) => {
 
 
     let messageContent = message.content;
+
+    console.log(message.content);
+
     messageContentArray = messageContent.split(' ');
 
+    console.log(messageContentArray);
+
+  
     let newMessage = "";
-    messageContentArray.foreach(function(oneData) {
+    messageContentArray.forEach(function(oneData) {
 
         let commata = " ";
         if (newMessage != "") {
