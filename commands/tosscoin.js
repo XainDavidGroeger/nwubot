@@ -14,7 +14,7 @@ module.exports = {
             tossedName = "head";
         } else {
             image = client.config.images.tossedtail;
-            tossedName = "tail";
+            tossedName = "tails";
         }
 
         let embed = new Discord.MessageEmbed()
