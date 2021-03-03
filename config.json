@@ -41,8 +41,8 @@
         "applyMentor": "http://ttrace.de/img/nwubot/apply_mentor.png",
         "notifyMe": "http://ttrace.de/img/nwubot/bell.png",
         "acceptedMentor": "http://ttrace.de/img/nwubot/accepted_mentor.png",
-        "tossedhead": "http://ttrace.de/img/nwubot/accepted_mentor.png",
-        "tossedtail": "http://ttrace.de/img/nwubot/apply_mentor.png"
+        "tossedhead": "http://ttrace.de/img/nwubot/heads.png",
+        "tossedtail": "http://ttrace.de/img/nwubot/tails.png"
     },
 
     "xp": {

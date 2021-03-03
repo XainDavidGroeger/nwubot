@@ -11,7 +11,7 @@ module.exports = {
         let tossedName = "";
         if (tossedCoin == 0) {
             image = client.config.images.tossedhead;
-            tossedName = "head";
+            tossedName = "heads";
         } else {
             image = client.config.images.tossedtail;
             tossedName = "tails";
