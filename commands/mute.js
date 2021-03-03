@@ -6,6 +6,10 @@ module.exports = {
     execute(client, message, args) {
 
 
+
+        console.log(client)
+        console.log(message)
+
         let guild = message.guild;
         let role = guild.roles.cache.some(r => r.name === client.config.roles.moderator);
 
