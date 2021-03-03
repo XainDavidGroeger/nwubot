@@ -6,7 +6,8 @@ module.exports = {
     execute(client, message, args) {
 
 
-        let role = message.guild.roles.cache.some(r => r.name === config.roles.moderator);
+        let guild = client.guilds.cache.get(process.env.GUILD_ID);
+        let role = guild.roles.cache.some(r => r.name === config.roles.moderator);
 
         if (role) {
 
