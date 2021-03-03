@@ -5,7 +5,7 @@ module.exports = {
     description: 'Toss a coin, randomly picks head or tail',
     execute(client, message, args, Discord) {
        
-        let tossedCoin =  Math.floor(Math.random() * 1); 
+        let tossedCoin =  Math.floor(Math.random() * 2); 
         console.log(tossedCoin);
         let image = "";
         let tossedName = "";
