@@ -19,7 +19,7 @@ module.exports = {
 
         let embed = new Discord.MessageEmbed()
             .setColor('#80FFFF')
-            .setTitle(`<@${message.author.username}> tossed ${tossedName}`)
+            .setTitle(`${message.author.username} tossed ${tossedName}`)
             .setImage(image)
         ;
         message.channel.send(embed);
