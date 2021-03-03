@@ -5,7 +5,9 @@ module.exports = {
     description: 'mutes a member',
     execute(client, message, args) {
 
-        let role = message.author.roles.cache.some(r => r.name === client.config.roles.moderator);
+        let roles = client.guilds.cache.get(process.env.GUILD_ID).roles;
+
+        let role = roles.cache.some(r => r.name === client.config.roles.moderator);
 
         if (message.member.roles.has(role.id)) {
 
