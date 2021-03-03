@@ -5,12 +5,7 @@ module.exports = {
     description: 'mutes a member',
     execute(client, message, args, test) {
 
-
-console.log(message)
-//console.log(args)
-//console.log(test)
-
-        if (message.member.roles.find(role => role.name === client.config.roles.moderator)) {
+        if (message.member.roles.cache.find(role => role.name === client.config.roles.moderator)) {
 
             const target = message.mentions.users.first();
 
