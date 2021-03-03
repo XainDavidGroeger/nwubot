@@ -7,6 +7,31 @@ module.exports = async (Discord, client, message) => {
     const prefix = config.prefix;
     if (message.author.bot) return;
 
+
+    let messageContent = message.content;
+    messageContentArray = messageContent.split(' ');
+
+    let newMessage = "";
+    messageContentArray.foreach(function(oneData) {
+
+        let commata = " ";
+        if (newMessage != "") {
+            commata = " , ";
+        }
+        if (client.swearwords.includes(oneData)) {
+            newMessage = newMessage +  commata +  "****";
+        } else {
+            newMessage = newMessage + commata + oneData;
+        }
+        
+    });
+
+    console.log(message.content)
+
+    message.edit(newMessage);
+
+    console.log(message.content)
+
     if (!message.content.startsWith(prefix)
         && message.channel.id === process.env.GENERAL_CHANNEL
         && xpService.validateMessageForXp(message.content)

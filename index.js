@@ -16,7 +16,16 @@ client.commands = new Discord.Collection();
 client.mongoose = mongoose;
 client.config = config;
 client.invites = [];
+client.swearwords = [];
 
+
+var filename = 'swear.txt';
+
+fs.readFile(filename, 'utf8', function(err, data) {
+  if (err) throw err;
+  var lines = data.split(/\r?\n/);
+  client.swearwords = lines;
+});
 
 ['command_handler', 'event_handler'].forEach(handler => {
     require(`./handlers/${handler}`)(client, Discord);
