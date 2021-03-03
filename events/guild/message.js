@@ -13,8 +13,6 @@ module.exports = async (Discord, client, message) => {
 
     messageContentArray = messageContent.split(' ');
 
-
-
     let newMessage = "";
     let includesBadWords = false;
     messageContentArray.forEach(function (oneData) {
@@ -25,11 +23,6 @@ module.exports = async (Discord, client, message) => {
             newMessage = newMessage + " " + oneData;
         }
     });
-
-
-    console.log(message.content)
-    console.log(includesBadWords)
-    console.log(newMessage)
 
     if (!message.content.startsWith(prefix)
         && message.channel.id === process.env.GENERAL_CHANNEL
