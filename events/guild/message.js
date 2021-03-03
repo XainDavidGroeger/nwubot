@@ -10,33 +10,28 @@ module.exports = async (Discord, client, message) => {
 
     let messageContent = message.content;
 
-    console.log(message.content);
 
     messageContentArray = messageContent.split(' ');
 
-    console.log(messageContentArray);
 
   
     let newMessage = "";
+    let includesBadWords = false;
     messageContentArray.forEach(function(oneData) {
-
         let commata = " ";
         if (newMessage != "") {
             commata = " , ";
         }
         if (client.swearwords.includes(oneData)) {
+            includesBadWords=true;
             newMessage = newMessage +  commata +  "****";
         } else {
             newMessage = newMessage + commata + oneData;
         }
-        
     });
-
-    console.log(message.content)
-
-    message.edit(newMessage);
-
-    console.log(message.content)
+    
+   
+    
 
     if (!message.content.startsWith(prefix)
         && message.channel.id === process.env.GENERAL_CHANNEL
@@ -54,5 +49,13 @@ module.exports = async (Discord, client, message) => {
 
 
     if (command) command.execute(client, message, args, Discord);
+
+
+    // delete swear message and send new message with **** instead of swear words
+    if(includesBadWords) {
+        message.channel.send(newMessage)
+        message.delete();
+    }
+
 }
 
