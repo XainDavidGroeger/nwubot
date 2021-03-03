@@ -15,8 +15,8 @@ module.exports = {
             const target = message.mentions.users.first();
 
             if (target) {
-                let mainRole = roles.cache.find(r => r.name === config.roles.member);
-                let muteRole = roles.cache.find(r => r.name === config.roles.muted);
+                let mainRole = roles.cache.find(r => r.name === client.config.roles.member);
+                let muteRole = roles.cache.find(r => r.name === client.config.roles.muted);
                 let memberTarget = client.guilds.cache.get(process.env.GUILD_ID).members.cache.get(target.id);
 
 
