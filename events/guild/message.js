@@ -18,15 +18,11 @@ module.exports = async (Discord, client, message) => {
     let newMessage = "";
     let includesBadWords = false;
     messageContentArray.forEach(function (oneData) {
-        let commata = " ";
-        if (newMessage != "") {
-            commata = " , ";
-        }
         if (client.swearwords.includes(oneData)) {
             includesBadWords = true;
-            newMessage = newMessage + commata + "****";
+            newMessage = newMessage + " " + "****";
         } else {
-            newMessage = newMessage + commata + oneData;
+            newMessage = newMessage + " " + oneData;
         }
     });
 
@@ -45,7 +41,7 @@ module.exports = async (Discord, client, message) => {
 
     // delete swear message and send new message with **** instead of swear words
     if (includesBadWords) {
-        message.channel.send(newMessage)
+        message.channel.send(`Message by ${message.author.username}: ` + newMessage)
         message.channel.send(`<@${message.author.id}> please mind your words, i had to replace some of your dirty expressions.`);
         message.delete();
     } else {
