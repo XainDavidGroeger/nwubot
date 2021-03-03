@@ -10,10 +10,10 @@ module.exports = {
         let image = "";
         let tossedName = "";
         if (tossedCoin == 0) {
-            image = cleint.config.images.tossedhead;
+            image = client.config.images.tossedhead;
             tossedName = "head";
         } else {
-            image = cleint.config.images.tossedtail;
+            image = client.config.images.tossedtail;
             tossedName = "tail";
         }
 
