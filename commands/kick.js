@@ -4,7 +4,7 @@ module.exports = {
     name: 'kick',
     description: 'kicks a member',
     execute(client, message, args) {
-        let role = message.member.roles.cache.some(r => r.name === config.roles.moderator);
+        let role = message.guild.roles.cache.some(r => r.name === config.roles.moderator);
         if (role) {
         const member = message.mentions.users.first();
             if (member) {

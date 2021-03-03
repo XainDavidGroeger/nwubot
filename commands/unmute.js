@@ -3,7 +3,7 @@ module.exports = {
     description: 'unmutes a member',
     execute(client, message, args) {
         
-        let role = message.member.roles.cache.some(r => r.name === 'moderator' || r.name === 'moderator');
+        let role = message.guild.roles.cache.some(r => r.name === 'moderator' || r.name === 'moderator');
 
         if (role) {
 

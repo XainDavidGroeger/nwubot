@@ -4,7 +4,7 @@ module.exports = {
     name: 'clear',
     description: 'clear x messages',
     execute(client, message, args) {
-        let role = message.member.roles.cache.some(r => r.name === config.roles.moderator);
+        let role = message.guild.roles.cache.some(r => r.name === config.roles.moderator);
         if (role) {
             if (!args[0]) return message.reply("You must enter the amount of messages you want to clear!");
             if (isNaN(args[0])) return message.reply('please enter a real number');
