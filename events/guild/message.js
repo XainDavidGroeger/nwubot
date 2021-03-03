@@ -20,7 +20,7 @@ module.exports = async (Discord, client, message) => {
     messageContentArray.forEach(function (oneData) {
         if (client.swearwords.includes(oneData)) {
             includesBadWords = true;
-            newMessage = newMessage + " " + "****";
+            newMessage = newMessage + " " + "$?!*";
         } else {
             newMessage = newMessage + " " + oneData;
         }
