@@ -3,7 +3,9 @@ const { config } = require('../config.json');
 module.exports = {
     name: 'mute',
     description: 'mutes a member',
-    execute(client, message, args, test) {
+    execute(client, message, args) {
+
+        let roles = client.guilds.cache.get(process.env.GUILD_ID).roles;
 
         if (message.member.roles.cache.find(role => role.name === client.config.roles.moderator)) {
 
