@@ -3,7 +3,12 @@ const { config } = require('../config.json');
 module.exports = {
     name: 'mute',
     description: 'mutes a member',
-    execute(client, message, args) {
+    execute(client, message, args, test) {
+
+
+console.log(message)
+//console.log(args)
+//console.log(test)
 
         if (message.member.roles.find(role => role.name === client.config.roles.moderator)) {
 
