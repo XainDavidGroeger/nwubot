@@ -18,7 +18,7 @@ module.exports = async (Discord, client, message) => {
     let newMessage = "";
     let includesBadWords = false;
     messageContentArray.forEach(function (oneData) {
-        if (client.swearwords.includes(oneData)) {
+        if (client.swearwords.includes(oneData.toLowerCase())) {
             includesBadWords = true;
             newMessage = newMessage + " " + "$?!*";
         } else {
