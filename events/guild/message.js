@@ -30,8 +30,10 @@ module.exports = async (Discord, client, message) => {
         }
     });
     
-   
-    
+
+   console.log(message.content)
+   console.log(includesBadWords)
+   console.log(newMessage)
 
     if (!message.content.startsWith(prefix)
         && message.channel.id === process.env.GENERAL_CHANNEL
