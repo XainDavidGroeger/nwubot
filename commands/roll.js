@@ -1,6 +1,7 @@
 const config = require('../config.json');
 const UserRepository = require('../repositories/userRepository');
 const LevelService = require('../services/levelService');
+const xpService = require("../../services/xpService");
 
 module.exports = {
     name: 'roll',
@@ -9,15 +10,10 @@ module.exports = {
 
         let user = await UserRepository.createOrFindUser(message.author.id, message.channel, client);
 
-        console.log(user);
-
         if (user.__v == 0) {
-            
-            let randomId =  Math.floor(Math.random() * 76); 
+            let randomId =  Math.floor(Math.random() * 62); 
             let shinobi = client.config.heroes[randomId];
-    
-            console.log(randomId)
-            console.log(shinobi)
+            await xpService.gainXp(shinobi.xp, message.author.id, message.channel, client);
     
             let embed = new Discord.MessageEmbed()
                 .setColor('#80FFFF')

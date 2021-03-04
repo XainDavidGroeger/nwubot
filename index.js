@@ -49,6 +49,7 @@ const job = schedule.scheduleJob('0 0 * * *', async function () {
         dailyMessageXp: 0,
         dailyRollUsed: 0,
         dailyQuestions: 0,
+        __v: 0,
     });
     client.guilds.cache.get(process.env.GUILD_ID).channels.cache.get(process.env.GENERAL_CHANNEL).send('Daily message XP was reset')
 });
