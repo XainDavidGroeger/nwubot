@@ -11,7 +11,7 @@ module.exports = {
 
         console.log(user);
 
-        if (user._v == 0) {
+        if (user.__v == 0) {
             
             let randomId =  Math.floor(Math.random() * 76); 
             let shinobi = client.config.heroes[randomId];
@@ -26,7 +26,7 @@ module.exports = {
             ;
             message.channel.send(embed);
 
-            user._v = 1;
+            user.__v = 1;
             await user.save()
             .then(result => console.log())
             .catch(err => console.log(err));
