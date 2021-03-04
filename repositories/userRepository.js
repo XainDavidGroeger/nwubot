@@ -37,6 +37,7 @@ async function createOrFindUser(userId, channel, client) {
             xp: 0,
             level: 1,
             joined: Date.now(),
+            dailyRollUsed: 0,
             dailyMessageXp: 0,
             dailyQuestions: 0,
             inviteLink: newInvite.url

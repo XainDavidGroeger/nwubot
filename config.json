@@ -64,6 +64,386 @@
             "7":  10000,
             "8":  20000
         }
+    },
+
+
+    "heroes": {
+        "0": {
+            "xp": 1,
+            "name": "Sakon",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "1": {
+            "xp": 1,
+            "name": "Tobirama",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "2": {
+            "xp": 1,
+            "name": "Hashirama",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "3": {
+            "xp": 1,
+            "name": "Sarutobi",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "4": {
+            "xp": 1,
+            "name": "Minato",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "5": {
+            "xp": 1,
+            "name": "Tsunade",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "6": {
+            "xp": 1,
+            "name": "Kakashi",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "7": {
+            "xp": 1,
+            "name": "Rock Lee",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "8": {
+            "xp": 1,
+            "name": "Hinata",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "9": {
+            "xp": 1,
+            "name": "Tenten",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "10": {
+            "xp": 1,
+            "name": "Sarutobi",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "11": {
+            "xp": 1,
+            "name": "Minato",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "12": {
+            "xp": 1,
+            "name": "Tsunade",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "13": {
+            "xp": 1,
+            "name": "Kakashi",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "14": {
+            "xp": 1,
+            "name": "Rock Lee",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "15": {
+            "xp": 1,
+            "name": "Hinata",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "16": {
+            "xp": 1,
+            "name": "Tenten",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "17": {
+            "xp": 1,
+            "name": "Shino",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "18": {
+            "xp": 1,
+            "name": "Sakura",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "19": {
+            "xp": 1,
+            "name": "Ino",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "20": {
+            "xp": 1,
+            "name": "Chouji",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "21": {
+            "xp": 1,
+            "name": "Naruto",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "22": {
+            "xp": 1,
+            "name": "Shikamaru",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "23": {
+            "xp": 1,
+            "name": "Kiba",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "24": {
+            "xp": 1,
+            "name": "Neji",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "25": {
+            "xp": 1,
+            "name": "Sai",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "26": {
+            "xp": 1,
+            "name": "Gai",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "27": {
+            "xp": 1,
+            "name": "Yamato",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "28": {
+            "xp": 1,
+            "name": "Anko",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "29": {
+            "xp": 1,
+            "name": "Asuma",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "30": {
+            "xp": 1,
+            "name": "Jiraiya",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "31": {
+            "xp": 1,
+            "name": "Iruka",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "32": {
+            "xp": 1,
+            "name": "Asura",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "33": {
+            "xp": 1,
+            "name": "Shizune",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "34": {
+            "xp": 1,
+            "name": "Mifune",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "35": {
+            "xp": 1,
+            "name": "Kankuro",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "36": {
+            "xp": 1,
+            "name": "Gaara",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "37": {
+            "xp": 1,
+            "name": "Temari",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "38": {
+            "xp": 1,
+            "name": "Asura",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "39": {
+            "xp": 1,
+            "name": "Asura",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "40": {
+            "xp": 1,
+            "name": "Mei",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "41": {
+            "xp": 1,
+            "name": "Asura",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "42": {
+            "xp": 1,
+            "name": "Raikage",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "43": {
+            "xp": 1,
+            "name": "Onoki",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "44": {
+            "xp": 1,
+            "name": "Danzo",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "45": {
+            "xp": 1,
+            "name": "Asura",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "46": {
+            "xp": 1,
+            "name": "Bee",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "47": {
+            "xp": 1,
+            "name": "Yugito",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "48": {
+            "xp": 1,
+            "name": "Han",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "49": {
+            "xp": 1,
+            "name": "Madara",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "50": {
+            "xp": 1,
+            "name": "Asura",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "51": {
+            "xp": 1,
+            "name": "Kakuzu",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "52": {
+            "xp": 1,
+            "name": "Itachi",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "53": {
+            "xp": 1,
+            "name": "Asura",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "54": {
+            "xp": 1,
+            "name": "Deidara",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "55": {
+            "xp": 1,
+            "name": "Kisame",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "56": {
+            "xp": 1,
+            "name": "Pein",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "57": {
+            "xp": 1,
+            "name": "Hidan",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "58": {
+            "xp": 1,
+            "name": "Konan",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "59": {
+            "xp": 1,
+            "name": "Sasori",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "60": {
+            "xp": 1,
+            "name": "Zetsu",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "61": {
+            "xp": 1,
+            "name": "Tobi",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "62": {
+            "xp": 1,
+            "name": "Sasuke",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "63": {
+            "xp": 1,
+            "name": "Juugo",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "64": {
+            "xp": 1,
+            "name": "Suigetsu",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "65": {
+            "xp": 1,
+            "name": "Karin",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "66": {
+            "xp": 1,
+            "name": "Haku",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "67": {
+            "xp": 1,
+            "name": "Zabuza",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "68": {
+            "xp": 1,
+            "name": "Hanzo",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "69": {
+            "xp": 1,
+            "name": "Kidoumaru",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "70": {
+            "xp": 1,
+            "name": "Jirobo",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "71": {
+            "xp": 1,
+            "name": "Kabuto",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "72": {
+            "xp": 1,
+            "name": "Orochimaru",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "73": {
+            "xp": 1,
+            "name": "Tayuya",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        },
+        "74": {
+            "xp": 1,
+            "name": "Kimimaro",
+            "image": "http://ttrace.de/img/nwubot/tails.png"
+        }
+       
     }
  
 

@@ -7,6 +7,7 @@ const userSchema = mongoose.Schema({
     level: Number,
     inviteLink: String,
     invitedBy: String,
+    dailyRollUsed: Number,
     dailyMessageXp: Number,
     dailyQuestions: Number,
     joined: Number
