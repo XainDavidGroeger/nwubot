@@ -9,6 +9,8 @@ module.exports = {
 
         let user = await UserRepository.createOrFindUser(message.author.id, message.channel, client);
 
+        console.log(user);
+
         if (user._v == 0) {
             
             let randomId =  Math.floor(Math.random() * 76); 
