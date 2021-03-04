@@ -5,10 +5,7 @@ module.exports = {
     description: 'daily random shinobi roll',
     execute(client, message, args, Discord) {
        
-
         let randomId =  Math.floor(Math.random() * 76); 
-
-
         let shinobi = client.config.heroes[randomId];
 
         console.log(randomId)
@@ -16,14 +13,12 @@ module.exports = {
 
         let embed = new Discord.MessageEmbed()
             .setColor('#80FFFF')
-            .setTitle(`${message.author.username} rolled ${shinobi.name}, you gain ${shinobi.xp}!`)
+            .setTitle(`${message.author.username} you rolled ${shinobi.name}, you gained ${shinobi.xp} XP!`)
             .setImage(shinobi.image)
         ;
         message.channel.send(embed);
 
         return true;
-
-        
     }
 
 }
