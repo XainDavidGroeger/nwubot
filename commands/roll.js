@@ -1,4 +1,6 @@
 const config = require('../config.json');
+const UserRepository = require('../repositories/userRepository');
+const LevelService = require('../services/levelService');
 
 module.exports = {
     name: 'roll',
