@@ -12,7 +12,7 @@ module.exports = {
         if (user.__v == 0) {
             let randomId =  Math.floor(Math.random() * 62); 
             let shinobi = client.config.heroes[randomId];
-            await xpService.gainXp(shinobi.xp, message.author.id, message.channel, client);
+            await xpService.gainXp(client.config.xp.rollXp[shinobi.xp], message.author.id, message.channel, client);
     
             let embed = new Discord.MessageEmbed()
                 .setColor('#80FFFF')
