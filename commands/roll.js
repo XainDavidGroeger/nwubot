@@ -1,7 +1,6 @@
 const config = require('../config.json');
 const UserRepository = require('../repositories/userRepository');
-const LevelService = require('../services/levelService');
-const xpService = require("../../services/xpService");
+const xpService = require("../services/xpService");
 
 module.exports = {
     name: 'roll',
