@@ -16,7 +16,7 @@ module.exports = {
     
             let embed = new Discord.MessageEmbed()
                 .setColor('#80FFFF')
-                .setTitle(`${message.author.username} you rolled ${shinobi.name}, you gained ${shinobi.xp} XP!`)
+                .setTitle(`${message.author.username} you rolled ${shinobi.name}, you gained ${client.config.xp.rollXp[shinobi.xp]} XP!`)
                 .setImage(shinobi.image)
             ;
             message.channel.send(embed);
