@@ -9,7 +9,7 @@ module.exports = {
 
         let user = await UserRepository.createOrFindUser(message.author.id, message.channel, client);
 
-        if (user.dailyRollUsed == 0) {
+        if (user._v == 0) {
             
             let randomId =  Math.floor(Math.random() * 76); 
             let shinobi = client.config.heroes[randomId];
@@ -24,7 +24,7 @@ module.exports = {
             ;
             message.channel.send(embed);
 
-            user.dailyRollUsed = 1;
+            user._v = 1;
             await user.save()
             .then(result => console.log())
             .catch(err => console.log(err));
