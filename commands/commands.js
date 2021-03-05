@@ -18,6 +18,7 @@ module.exports = {
             { name: '!answer QUESTION_ID YOUR_ANSWER', value: `Answer an excisting question and if it helps the creator of the question you receive some nice XP!` },
             { name: '!xpinfo', value: `Display info about how to gain xp.` },
             { name: '!tosscoin', value: `Tosses a coin to randomly receive head or tails.` },
+            { name: '!roll', value: `Roll one of 61 random Naruto characters in order to receive XP (can be only used once per day)` },
         )
         message.channel.send(embed);
     }
