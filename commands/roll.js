@@ -40,8 +40,8 @@ module.exports = {
 
 
             var start_date = moment(now, 'YYYY-MM-DD HH:mm:ss');
-            var tomorrow = moment(tomorrow, 'YYYY-MM-DD HH:mm:ss');
-            var duration = moment.duration(tomorrow.diff(start_date));
+            var tomorrownext = moment(tomorrow, 'YYYY-MM-DD HH:mm:ss');
+            var duration = moment.duration(tomorrownext.diff(start_date));
 
             console.log(duration.asHours())
 
