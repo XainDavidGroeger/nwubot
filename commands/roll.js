@@ -1,6 +1,7 @@
 const config = require('../config.json');
 const UserRepository = require('../repositories/userRepository');
 const xpService = require("../services/xpService");
+const moment = require("moment");
 
 module.exports = {
     name: 'roll',
@@ -30,9 +31,19 @@ module.exports = {
             message.channel.send(`You already rolled today, try your luck again tomorrow!`);
 
 
-            var currdatetime = new Date().getHours();
+            var now = new Date();
 
-            console.log(currdatetime)
+            const today = new Date()
+            const tomorrow = new Date(today)
+            tomorrow.setDate(tomorrow.getDate() + 1)
+            tomorrow.setHours(0);
+
+
+            var start_date = moment(now, 'YYYY-MM-DD HH:mm:ss');
+            var tomorrow = moment(tomorrow, 'YYYY-MM-DD HH:mm:ss');
+            var duration = moment.duration(tomorrow.diff(start_date));
+
+            console.log(duration.asHours())
 
         }
        
