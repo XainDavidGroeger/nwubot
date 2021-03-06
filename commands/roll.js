@@ -28,6 +28,12 @@ module.exports = {
     
         } else {
             message.channel.send(`You already rolled today, try your luck again tomorrow!`);
+
+
+            var currdatetime = new Date().getHours();
+
+            console.log(currdatetime)
+
         }
        
         return true;
