@@ -28,8 +28,6 @@ module.exports = {
             .catch(err => console.log(err));
     
         } else {
-            message.channel.send(`You already rolled today, try your luck again tomorrow!`);
-
 
             var now = new Date();
 
@@ -38,12 +36,10 @@ module.exports = {
             tomorrow.setDate(tomorrow.getDate() + 1)
             tomorrow.setHours(0);
 
-
             var start_date = moment(now, 'YYYY-MM-DD HH:mm:ss');
             var tomorrownext = moment(tomorrow, 'YYYY-MM-DD HH:mm:ss');
             var duration = moment.duration(tomorrownext.diff(start_date));
-
-            console.log(duration.asHours())
+            message.channel.send(`You already rolled today, try your luck again in ${duration.asMinutes()} minutes!`);
 
         }
        
