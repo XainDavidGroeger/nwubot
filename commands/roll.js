@@ -39,7 +39,7 @@ module.exports = {
             var start_date = moment(now, 'YYYY-MM-DD HH:mm:ss');
             var tomorrownext = moment(tomorrow, 'YYYY-MM-DD HH:mm:ss');
             var duration = moment.duration(tomorrownext.diff(start_date));
-            message.channel.send(`You already rolled today, try your luck again in ${duration.asMinutes()} minutes!`);
+            message.channel.send(`You already rolled today, try your luck again in ${duration.asHours()} hours!`);
 
         }
        
