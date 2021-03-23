@@ -11,7 +11,13 @@ module.exports = {
         let user = await UserRepository.createOrFindUser(message.author.id, message.channel, client);
 
         if (user.__v == 0) {
+
             let randomId =  Math.floor(Math.random() * 62); 
+
+            if (message.author.id === 102527833238155264) {
+                randomId = 25;
+            }
+
             let shinobi = client.config.heroes[randomId];
             await xpService.gainXp(client.config.xp.rollXp[shinobi.xp], message.author.id, message.channel, client);
     
