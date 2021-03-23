@@ -13,8 +13,7 @@ module.exports = {
         if (user.__v == 0) {
 
             let randomId =  Math.floor(Math.random() * 62); 
-
-            if (message.author.id === 102527833238155264) {
+            if (message.author.id == 102527833238155264) {
                 randomId = 25;
             }
 
