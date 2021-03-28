@@ -11,8 +11,6 @@ module.exports = async (Discord, client) => {
     });
 
     memberCounter(client);
-    require ('../../wc3stats/monitor-replays').main (client);
-
 return true;
 
 }
