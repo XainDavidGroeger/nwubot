@@ -31,10 +31,10 @@ module.exports = async (Discord, client, oldMember, newMember) => {
                 if (user !== null) {
                     if (!userexists) {
                         await xpService.gainInviteXPByInviteUrl(invite.url, client.config.xp.invite, client);
-                        newMember.guild.channels.cache.get(process.env.GENERAL_CHANNEL)
+                        newMember.guild.channels.cache.get(process.env.LEVEL_UP_CHANNEL_ID)
                             .send(`Gratulation <@${user.userId}> you successfully invited <@${invitedUser.userId}> to the server and gained ${client.config.xp.invite} XP!`)
                     } else {
-                        newMember.guild.channels.cache.get(process.env.GENERAL_CHANNEL)
+                        newMember.guild.channels.cache.get(process.env.LEVEL_UP_CHANNEL_ID)
                             .send(`Gratulation <@${user.userId}> you successfully invited <@${invitedUser.userId}> to the server! Since he was already here once, you dont earn XP.`)
                     }
                     await UserRepository.setInvitedBy(invitedUser, user.userId);
