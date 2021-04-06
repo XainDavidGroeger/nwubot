@@ -34,9 +34,9 @@ module.exports = async (Discord, client, message) => {
 
     // delete swear message and send new message with **** instead of swear words
     if (includesBadWords) {
-        message.channel.send(`Message by ${message.author.username}: ` + newMessage)
+     //   message.channel.send(`Message by ${message.author.username}: ` + newMessage)
       //  message.channel.send(`<@${message.author.id}> please mind your words, i had to replace some of your dirty expressions.`);
-        message.delete();
+     //   message.delete();
     } else {
         if (!message.content.startsWith(prefix)) return;
 
