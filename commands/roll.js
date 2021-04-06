@@ -9,6 +9,7 @@ module.exports = {
     async execute(client, message, args, Discord) {
 
         let user = await UserRepository.createOrFindUser(message.author.id, message.channel, client);
+        const sendToMessageChannel = message.guild.channels.cache.get(process.env.LEVEL_UP_CHANNEL_ID);
 
         if (user.__v == 0) {
 
@@ -21,7 +22,8 @@ module.exports = {
                 .setTitle(`${message.author.username} you rolled ${shinobi.name}, you gained ${client.config.xp.rollXp[shinobi.xp]} XP!`)
                 .setImage(shinobi.image)
             ;
-            message.channel.send(embed);
+
+            sendToMessageChannel.send(embed);
 
             user.__v = 1;
             await user.save()
@@ -42,9 +44,9 @@ module.exports = {
             var duration = moment.duration(tomorrownext.diff(start_date));
 
             if (duration.asHours() > 1) {
-                message.channel.send(`You already rolled today, try your luck again in ${duration.asHours()} hours!`);
+                sendToMessageChannel.send(`You already rolled today, try your luck again in ${duration.asHours()} hours!`);
             } else {
-                message.channel.send(`You already rolled today, try your luck again in ${duration.asHours()} hour!`);
+                sendToMessageChannel.send(`You already rolled today, try your luck again in ${duration.asHours()} hour!`);
             }
         }
        

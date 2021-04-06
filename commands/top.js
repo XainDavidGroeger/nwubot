@@ -6,7 +6,8 @@ module.exports = {
     name: 'top',
     description: 'Display the current top 10 level ranks.',
     async execute(client, message, args, Discord) {
-       
+
+        const sendToMessageChannel = message.guild.channels.cache.get(process.env.LEVEL_UP_CHANNEL_ID);
         let topUsers = await User.find()
         .sort({xp: -1})
         .limit(10)
@@ -31,7 +32,6 @@ module.exports = {
             }
 
         });
-
-        message.channel.send(topEmbed);
+        sendToMessageChannel.send(topEmbed);
     }
 }
