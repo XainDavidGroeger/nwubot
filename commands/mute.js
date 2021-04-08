@@ -17,6 +17,7 @@ module.exports = {
             dailyRollUsed: 0,
             __v: 0,
         });
+        client.guilds.cache.get(process.env.GUILD_ID).channels.cache.get(process.env.GENERAL_CHANNEL).send('Time to roll again, give it a shot with !roll.')
 
             const target = message.mentions.users.first();
 
