@@ -47,11 +47,25 @@ client.mongoose.connect(process.env.MONGO_SRV, {
 const job = schedule.scheduleJob('0 0 * * *', async function () {
     await User.updateMany({
         dailyMessageXp: 0,
-        dailyRollUsed: 0,
         dailyQuestions: 0,
+    });
+    client.guilds.cache.get(process.env.GUILD_ID).channels.cache.get(process.env.GENERAL_CHANNEL).send('Daily message and questions XP was reset')
+});
+
+const job = schedule.scheduleJob('0 22 * * *', async function () {
+    await User.updateMany({
+        dailyRollUsed: 0,
         __v: 0,
     });
-    client.guilds.cache.get(process.env.GUILD_ID).channels.cache.get(process.env.GENERAL_CHANNEL).send('Daily message XP was reset')
+    client.guilds.cache.get(process.env.GUILD_ID).channels.cache.get(process.env.GENERAL_CHANNEL).send('Time to roll again, give it a shot with !roll.')
+});
+
+const job = schedule.scheduleJob('0 10 * * *', async function () {
+    await User.updateMany({
+        dailyRollUsed: 0,
+        __v: 0,
+    });
+    client.guilds.cache.get(process.env.GUILD_ID).channels.cache.get(process.env.GENERAL_CHANNEL).send('Time to roll again, give it a shot with !roll.')
 });
 
 
