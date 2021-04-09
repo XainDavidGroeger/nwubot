@@ -43,11 +43,10 @@ module.exports = {
             var tomorrownext = moment(tomorrow, 'YYYY-MM-DD HH:mm:ss');
             var duration = moment.duration(tomorrownext.diff(start_date));
 
-            if (duration.asHours() > 1) {
-                sendToMessageChannel.send(`You already rolled today, try your luck again in ${duration.asHours()} hours!`);
-            } else {
-                sendToMessageChannel.send(`You already rolled today, try your luck again in ${duration.asHours()} hour!`);
-            }
+
+            // TODO new times 12 am and pm checking
+            sendToMessageChannel.send(`You already rolled today, try your luck later.`);
+
         }
        
         return true;
