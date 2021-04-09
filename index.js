@@ -52,7 +52,7 @@ const job = schedule.scheduleJob('0 0 * * *', async function () {
     client.guilds.cache.get(process.env.GUILD_ID).channels.cache.get(process.env.GENERAL_CHANNEL).send('Daily message and questions XP was reset')
 });
 
-const job = schedule.scheduleJob('0 22 * * *', async function () {
+const job2 = schedule.scheduleJob('0 22 * * *', async function () {
     await User.updateMany({
         dailyRollUsed: 0,
         __v: 0,
@@ -60,7 +60,7 @@ const job = schedule.scheduleJob('0 22 * * *', async function () {
     client.guilds.cache.get(process.env.GUILD_ID).channels.cache.get(process.env.GENERAL_CHANNEL).send('Time to roll again, give it a shot with !roll.')
 });
 
-const job = schedule.scheduleJob('0 10 * * *', async function () {
+const job3 = schedule.scheduleJob('0 10 * * *', async function () {
     await User.updateMany({
         dailyRollUsed: 0,
         __v: 0,
