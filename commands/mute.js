@@ -1,6 +1,6 @@
 const ms = require('ms');
 const { config } = require('../config.json');
-const User = require('./models/user');
+const User = require('../models/user');
 module.exports = {
     name: 'mute',
     description: 'mutes a member',
