@@ -57,7 +57,7 @@ const job2 = schedule.scheduleJob('0 22 * * *', async function () {
         dailyRollUsed: 0,
         __v: 0,
     });
-    client.guilds.cache.get(process.env.GUILD_ID).channels.cache.get(process.env.GENERAL_CHANNEL).send('Time to roll again, give it a shot with !roll.')
+    client.guilds.cache.get(process.env.GUILD_ID).channels.cache.get(process.env.LEVEL_UP_CHANNEL_ID).send('Time to roll again, give it a shot with !roll.')
 });
 
 const job3 = schedule.scheduleJob('0 10 * * *', async function () {
@@ -65,7 +65,7 @@ const job3 = schedule.scheduleJob('0 10 * * *', async function () {
         dailyRollUsed: 0,
         __v: 0,
     });
-    client.guilds.cache.get(process.env.GUILD_ID).channels.cache.get(process.env.GENERAL_CHANNEL).send('Time to roll again, give it a shot with !roll.')
+    client.guilds.cache.get(process.env.GUILD_ID).channels.cache.get(process.env.LEVEL_UP_CHANNEL_ID).send('Time to roll again, give it a shot with !roll.')
 });
 
 
